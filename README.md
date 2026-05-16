@@ -200,16 +200,15 @@ Input Image (150 × 150 × 3)
 ```
 cats-vs-dogs-classifier/
 │
-├── classifier.py          # Main script (model, training, visualization)
-├── README.md              # You are here
-└── requirements.txt       # Python dependencies
+├── Transfer_Learning_with_a_pre_trained_model.ipynb   # Main notebook (model, training, visualization)
+└── README.md                                          # You are here
 ```
 
 ---
 
 ## ⚙️ Setup & Installation
 
-**Prerequisites:** Python 3.8+, pip
+**Prerequisites:** Python 3.8+, pip, Jupyter Notebook or JupyterLab
 
 ```bash
 # 1. Clone the repository
@@ -221,7 +220,7 @@ python -m venv venv
 source venv/bin/activate      # On Windows: venv\Scripts\activate
 
 # 3. Install dependencies
-pip install tensorflow tensorflow-datasets matplotlib numpy
+pip install tensorflow tensorflow-datasets matplotlib numpy jupyter
 ```
 
 ---
@@ -229,8 +228,11 @@ pip install tensorflow tensorflow-datasets matplotlib numpy
 ## 🚀 How to Run
 
 ```bash
-python classifier.py
+# Launch Jupyter Notebook
+jupyter notebook Transfer_Learning_with_a_pre_trained_model.ipynb
 ```
+
+Then run all cells in order via **Kernel → Restart & Run All**.
 
 On first run, TensorFlow Datasets will automatically download the `cats_vs_dogs` dataset (~800 MB). Subsequent runs use the cached version.
 
