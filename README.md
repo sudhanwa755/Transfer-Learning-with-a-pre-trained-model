@@ -7,7 +7,7 @@
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)](https://www.tensorflow.org/)
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![MobileNetV2](https://img.shields.io/badge/Model-MobileNetV2-34A853?style=for-the-badge&logo=google&logoColor=white)](https://keras.io/api/applications/mobilenet/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+
 
 > **Train a high-accuracy image classifier in under 5 minutes** — using the power of pretrained ImageNet knowledge, applied to one of the most iconic machine learning challenges.
 
@@ -17,24 +17,25 @@
 
 ## 📌 Table of Contents
 
-- [🌟 Project Overview](#-project-overview)
-- [🧠 Core Concepts Explained](#-core-concepts-explained)
+- [🌟 Project Overview](#project-overview)
+- [🧠 Core Concepts Explained](#core-concepts-explained)
   - [Why Cats vs Dogs?](#why-cats-vs-dogs)
-  - [Transfer Learning — Standing on the Shoulders of Giants](#transfer-learning--standing-on-the-shoulders-of-giants)
-  - [MobileNetV2 — Small Footprint, Big Brains](#mobilenetv2--small-footprint-big-brains)
-  - [The Data Pipeline — Map, Shuffle, Batch, Prefetch](#the-data-pipeline--map-shuffle-batch-prefetch)
-  - [Frozen Weights — Preserving Pretrained Knowledge](#frozen-weights--preserving-pretrained-knowledge)
-- [🏗️ Architecture Diagram](#-architecture-diagram)
-- [📂 Project Structure](#-project-structure)
-- [⚙️ Setup & Installation](#-setup--installation)
-- [🚀 How to Run](#-how-to-run)
-- [📊 Results](#-results)
-- [🔬 Code Walkthrough](#-code-walkthrough)
-- [🛠️ Configuration & Hyperparameters](#-configuration--hyperparameters)
-- [🔭 Future Improvements](#-future-improvements)
+  - [Transfer Learning — Standing on the Shoulders of Giants](#transfer-learning)
+  - [MobileNetV2 — Small Footprint, Big Brains](#mobilenetv2)
+  - [The Data Pipeline — Map, Shuffle, Batch, Prefetch](#data-pipeline)
+  - [Frozen Weights — Preserving Pretrained Knowledge](#frozen-weights)
+- [🏗️ Architecture Diagram](#architecture-diagram)
+- [📂 Project Structure](#project-structure)
+- [⚙️ Setup & Installation](#setup--installation)
+- [🚀 How to Run](#how-to-run)
+- [📊 Results](#results)
+- [🔬 Code Walkthrough](#code-walkthrough)
+- [🛠️ Configuration & Hyperparameters](#configuration--hyperparameters)
+- [🔭 Future Improvements](#future-improvements)
 
 ---
 
+<a name="project-overview"></a>
 ## 🌟 Project Overview
 
 This project demonstrates how to build a **production-grade binary image classifier** that distinguishes between cats and dogs — without training from scratch. Instead, we leverage **Transfer Learning** with **MobileNetV2** (pretrained on ImageNet), dramatically reducing training time and data requirements while maintaining high accuracy.
@@ -51,8 +52,10 @@ This project demonstrates how to build a **production-grade binary image classif
 
 ---
 
+<a name="core-concepts-explained"></a>
 ## 🧠 Core Concepts Explained
 
+<a name="why-cats-vs-dogs"></a>
 ### Why Cats vs Dogs?
 
 At first glance, this seems simple — but it's deceptively challenging for a machine. Cats and dogs share similar visual attributes: fur texture, four limbs, similar proportions, variable backgrounds, and enormous diversity within each class (a chihuahua looks nothing like a husky). This makes the problem an ideal benchmark for evaluating a model's ability to learn **abstract, discriminative visual features** rather than memorizing simple patterns.
@@ -61,6 +64,7 @@ It also serves as a **gateway problem** — mastering this teaches you the same 
 
 ---
 
+<a name="transfer-learning"></a>
 ### Transfer Learning — Standing on the Shoulders of Giants
 
 > *"Why build a library from scratch when the world's greatest library already exists?"*
@@ -94,6 +98,7 @@ This approach is not just faster — it often achieves **better accuracy** than 
 
 ---
 
+<a name="mobilenetv2"></a>
 ### MobileNetV2 — Small Footprint, Big Brains
 
 **MobileNetV2** is a convolutional neural network architecture designed by Google specifically for **speed and memory efficiency**, without sacrificing accuracy.
@@ -111,6 +116,7 @@ In our project, we use MobileNetV2 with `include_top=False`, which strips off th
 
 ---
 
+<a name="data-pipeline"></a>
 ### The Data Pipeline — Map, Shuffle, Batch, Prefetch
 
 Efficient data loading is just as important as model design. A slow pipeline starves your GPU. We build ours using TensorFlow's `tf.data` API with four key steps:
@@ -140,6 +146,7 @@ Raw Dataset
 
 ---
 
+<a name="frozen-weights"></a>
 ### Frozen Weights — Preserving Pretrained Knowledge
 
 ```python
@@ -162,6 +169,7 @@ With freezing:
 
 ---
 
+<a name="architecture-diagram"></a>
 ## 🏗️ Architecture Diagram
 
 ```
@@ -195,6 +203,7 @@ Input Image (150 × 150 × 3)
 
 ---
 
+<a name="project-structure"></a>
 ## 📂 Project Structure
 
 ```
@@ -206,6 +215,7 @@ cats-vs-dogs-classifier/
 
 ---
 
+<a name="setup--installation"></a>
 ## ⚙️ Setup & Installation
 
 **Prerequisites:** Python 3.8+, pip, Jupyter Notebook or JupyterLab
@@ -225,6 +235,7 @@ pip install tensorflow tensorflow-datasets matplotlib numpy jupyter
 
 ---
 
+<a name="how-to-run"></a>
 ## 🚀 How to Run
 
 ```bash
@@ -247,6 +258,7 @@ Epoch 2/5 - loss: 0.1893 - accuracy: 0.9301 - val_accuracy: 0.9388
 
 ---
 
+<a name="results"></a>
 ## 📊 Results
 
 After just **5 epochs** on a 10% data subset:
@@ -258,10 +270,11 @@ After just **5 epochs** on a 10% data subset:
 
 > 💡 These results demonstrate the extraordinary power of transfer learning — achieving **>90% accuracy with minimal data and compute**, which would be impossible training from scratch under the same conditions.
 
-The script automatically generates training/validation accuracy and loss curves for visual analysis of model convergence.
+The notebook automatically generates training/validation accuracy and loss curves for visual analysis of model convergence.
 
 ---
 
+<a name="code-walkthrough"></a>
 ## 🔬 Code Walkthrough
 
 ```python
@@ -317,6 +330,7 @@ history = model.fit(train_batches, epochs=EPOCHS, validation_data=test_batches)
 
 ---
 
+<a name="configuration--hyperparameters"></a>
 ## 🛠️ Configuration & Hyperparameters
 
 | Parameter | Default | Effect of Increasing |
@@ -333,6 +347,7 @@ split=['train[:80%]', 'train[80%:]']
 
 ---
 
+<a name="future-improvements"></a>
 ## 🔭 Future Improvements
 
 - [ ] **Fine-tuning** — Unfreeze the top layers of MobileNetV2 after initial training for a second-stage boost
